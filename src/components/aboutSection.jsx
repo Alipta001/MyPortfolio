@@ -20,7 +20,7 @@ export default function AboutSection() {
           >
             <div className="relative z-10 rounded-[3rem] overflow-hidden border border-white/10 aspect-[4/5] group bg-[#111]">
               <img 
-                src="src/media/Alipta.jpg" 
+                src="src/assets/Alipta.jpg" 
                 alt="Alipta Ghosh" 
                 /* grayscale-0: Color by default (Mobile)
                    lg:grayscale: B&W on Desktop
