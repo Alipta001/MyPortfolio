@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
+import profileImg from "../assets/Alipta.jpg";
 export default function AboutSection() {
   return (
     <section id="about" className="py-24 md:py-40 bg-[#030303] relative overflow-hidden text-white">
@@ -20,7 +20,7 @@ export default function AboutSection() {
           >
             <div className="relative z-10 rounded-[3rem] overflow-hidden border border-white/10 aspect-[4/5] group bg-[#111]">
               <img 
-                src="src/assets/Alipta.jpg" 
+                src={profileImg}
                 alt="Alipta Ghosh" 
                 /* grayscale-0: Color by default (Mobile)
                    lg:grayscale: B&W on Desktop
