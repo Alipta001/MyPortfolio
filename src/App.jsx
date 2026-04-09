@@ -15,7 +15,7 @@ function App() {
         <Hero />
         <AboutSection />
         <SkillSection />
-        <ServiceSection /> {/* New Section Attached Here */}
+        <ServiceSection />
         <Projects />
         <Contact />
       </main>
