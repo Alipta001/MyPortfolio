@@ -79,7 +79,7 @@ export default function AboutSection() {
                     Current Stack
                   </h4>
                   <p className="text-white text-sm md:text-base font-medium tracking-tight">
-                    React / Next.js / Tailwind
+                    Node js/ MongoDB/ React / Next.js / Tailwind
                   </p>
                 </div>
               </div>
