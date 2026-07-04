@@ -224,17 +224,17 @@ const projects = [
     size: "lg:col-span-8",
     link: "https://hotel-booking-frontend-orcin.vercel.app" // <-- Added link here
   },
-  {
-    title: "RupaKar",
-    category: "Cultural E-com",
-    desc: "An immersive e-commerce platform for artisanal crafts.",
-    tech: ["React", "Firebase", "Stripe"],
-    // Fixed the broken 4th image URL below with a working pottery/crafts asset
-    image: "https://images.unsplash.com/photo-1673168551810-5b35fc903675?fm=jpg&q=60&w=600&auto=format&fit=crop", 
-    gradient: "from-[#00c6ff] to-[#0072ff]",
-    size: "lg:col-span-8",
-    link: "https://yourprojectlink.com/rupakar" // <-- Added link here
-  },
+  // {
+  //   title: "RupaKar",
+  //   category: "Cultural E-com",
+  //   desc: "An immersive e-commerce platform for artisanal crafts.",
+  //   tech: ["React", "Firebase", "Stripe"],
+  //   // Fixed the broken 4th image URL below with a working pottery/crafts asset
+  //   image: "https://images.unsplash.com/photo-1673168551810-5b35fc903675?fm=jpg&q=60&w=600&auto=format&fit=crop", 
+  //   gradient: "from-[#00c6ff] to-[#0072ff]",
+  //   size: "lg:col-span-8",
+  //   link: "https://yourprojectlink.com/rupakar" // <-- Added link here
+  // },
 ];
 
 export default function Projects() {
