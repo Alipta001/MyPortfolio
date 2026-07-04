@@ -15,11 +15,11 @@ export default function Footer() {
       href: 'https://www.linkedin.com/in/alipta-ghosh001/', 
       icon: <FaLinkedinIn size={20} /> 
     },
-    { 
-      name: 'Twitter', 
-      href: 'https://twitter.com/your-username', 
-      icon: <FaTwitter size={20} /> 
-    },
+    // { 
+    //   name: 'Twitter', 
+    //   href: 'https://twitter.com/your-username', 
+    //   icon: <FaTwitter size={20} /> 
+    // },
     { 
       name: 'Email', 
       href: 'mailto:aliptaghosh7@gmail.com', 
