@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import profileImg from "../assets/Alipta.jpg";
+import profileImg from "/images/Alipta-picture.jpeg";
 
 export default function AboutSection() {
   return (
