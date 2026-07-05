@@ -178,7 +178,6 @@
 // }
 
 
-
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
@@ -191,50 +190,38 @@ const projects = [
     image: "https://images.unsplash.com/photo-1512132411229-c30391241dd8?q=80&w=600",
     gradient: "from-[#FF4E50] to-[#F9D423]",
     size: "lg:col-span-8",
-    link: "https://zingo-one.vercel.app/" // <-- Added link here
+    link: "https://zingo-one.vercel.app/"
   },
   {
     title: "DocReserve",
     category: "Healthcare SaaS",
     desc: "Seamless doctor booking ecosystem powered by TanStack Query.",
     tech: ["React", "Node.js", "MongoDB"],
-    image: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=600",
+    image: "https://images.unsplash.com/photo-1638202993928-7267aad84c31",
     gradient: "from-[#11998e] to-[#38ef7d]",
     size: "lg:col-span-4",
-    link: "https://v0-doctor-appointment-platform-steel.vercel.app/" // <-- Added link here
+    link: "https://v0-doctor-appointment-platform-steel.vercel.app/"
   },
   {
-    title: "InventoryHub",
-    category: "Enterprise ERP",
-    desc: "Smart product management with automated analytics dashboards.",
+    title: "Student Management",
+    category: "Teaching",
+    desc: "Smart Student management for Educators.",
     tech: ["MERN", "Firebase", "OAuth"],
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600",
+    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
     gradient: "from-[#8E2DE2] to-[#4A00E0]",
     size: "lg:col-span-4",
-    link: "https://remember-me-i9kt.vercel.app/" // <-- Added link here
+    link: "https://remember-me-i9kt.vercel.app/"
   },
   {
     title: "LuxeStay",
-    category: "Cultural E-com",
-    desc: "An immersive e-commerce platform for artisanal crafts.",
-    tech: ["React", "Firebase", "Stripe"],
-    // Fixed the broken 4th image URL below with a working pottery/crafts asset
-    image: "https://images.unsplash.com/photo-1673168551810-5b35fc903675?fm=jpg&q=60&w=600&auto=format&fit=crop", 
+    category: "Online Booking",
+    desc: "An immersive Hotel Booking platform for anyone.",
+    tech: ["Nextjs", "Nodejs", "Stripe"],
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945", 
     gradient: "from-[#00c6ff] to-[#0072ff]",
     size: "lg:col-span-8",
-    link: "https://hotel-booking-frontend-orcin.vercel.app" // <-- Added link here
-  },
-  // {
-  //   title: "RupaKar",
-  //   category: "Cultural E-com",
-  //   desc: "An immersive e-commerce platform for artisanal crafts.",
-  //   tech: ["React", "Firebase", "Stripe"],
-  //   // Fixed the broken 4th image URL below with a working pottery/crafts asset
-  //   image: "https://images.unsplash.com/photo-1673168551810-5b35fc903675?fm=jpg&q=60&w=600&auto=format&fit=crop", 
-  //   gradient: "from-[#00c6ff] to-[#0072ff]",
-  //   size: "lg:col-span-8",
-  //   link: "https://yourprojectlink.com/rupakar" // <-- Added link here
-  // },
+    link: "https://hotel-booking-frontend-orcin.vercel.app"
+  }
 ];
 
 export default function Projects() {
@@ -324,7 +311,8 @@ function ModernProjectCard({ project, index }) {
               style={{ x: imgX, y: imgY, scale: 1.15 }} 
               src={project.image} 
               alt={project.title} 
-              className="w-full h-full object-cover transition-all duration-700 grayscale-[100%] group-hover:grayscale-0"
+              // Fixed: Added max-lg:grayscale-0 so images are vibrant on mobile right away
+              className="w-full h-full object-cover transition-all duration-700 max-lg:grayscale-0 lg:grayscale-[100%] group-hover:grayscale-0"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/20 to-transparent" />
           </div>
@@ -368,7 +356,7 @@ function ModernProjectCard({ project, index }) {
           </div>
 
           {/* 3. FLOATING LINK BUTTON */}
-          <div className="absolute top-8 right-8 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0">
+          <div className="absolute top-8 right-8 max-lg:opacity-100 opacity-0 group-hover:opacity-100 transition-all duration-500 max-lg:translate-x-0 translate-x-4 group-hover:translate-x-0">
             <div className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-cyan-500 hover:text-white transition-all shadow-xl">
               <svg width="18" height="18" viewBox="0 0 15 15" fill="none"><path d="M3.64645 11.3536L10.2929 4.70711V9C10.2929 9.27614 10.5167 9.5 10.7929 9.5C11.069 9.5 11.2929 9.27614 11.2929 9V3.5C11.2929 3.22386 11.069 3 10.7929 3H5.29289C5.01675 3 4.79289 3.22386 4.79289 3.5C4.79289 3.77614 5.01675 4 5.29289 4H9.58579L2.93934 10.6464C2.74408 10.8417 2.74408 11.1583 2.93934 11.3536C3.1346 11.5489 3.45118 11.5489 3.64645 11.3536Z" fill="currentColor"></path></svg>
             </div>
