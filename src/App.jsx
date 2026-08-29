@@ -4,10 +4,11 @@ import Hero from './components/hero';
 import AboutSection from './components/aboutSection';
 import SkillSection from './components/skillSection';
 import EducationSection from './components/educationSection';
-import ServiceSection from './components/serviceSection'; // New Import
+import ServiceSection from './components/serviceSection';
 import Projects from './components/projectSection';
 import Contact from './components/contact';
 import Footer from './components/footer';
+import CustomCursor from './components/CustomCursor';
 
 function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('portfolio-theme') || 'dark');
@@ -21,21 +22,24 @@ function App() {
   };
 
   return (
-    <div
-      className={`${theme === 'light' ? 'theme-light' : 'theme-dark'} min-h-screen text-white transition-colors duration-500 selection:bg-cyan-500/30`}
-    >
-      <Navbar theme={theme} onToggleTheme={toggleTheme} />
-      <main>
-        <Hero />
-        <AboutSection />
-        <SkillSection />
-        <EducationSection />
-        <ServiceSection />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <CustomCursor />
+      <div
+        className={`${theme === 'light' ? 'theme-light' : 'theme-dark'} min-h-screen text-white transition-colors duration-500 selection:bg-cyan-500/30`}
+      >
+        <Navbar theme={theme} onToggleTheme={toggleTheme} />
+        <main>
+          <Hero />
+          <AboutSection />
+          <SkillSection />
+          <EducationSection />
+          <ServiceSection />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 }
 
