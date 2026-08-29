@@ -13,7 +13,7 @@ export default function EducationSection() {
   }, []);
 
   return (
-    <section id="education" className="py-20 md:py-32 px-6 bg-[#030303] text-white overflow-hidden">
+    <section id="education" className="py-16 md:py-24 px-6 bg-[#030303] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

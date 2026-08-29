@@ -4,7 +4,7 @@ import profileImg from "/images/Alipta-picture.jpeg";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 md:py-40 bg-[#030303] relative overflow-hidden text-white">
+    <section id="about" className="py-16 md:py-24 bg-[#030303] relative overflow-hidden text-white">
       
       {/* Background Accent Glow */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />

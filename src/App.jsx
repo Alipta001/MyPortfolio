@@ -21,7 +21,9 @@ function App() {
   };
 
   return (
-    <div className={`${theme === 'light' ? 'theme-light' : 'theme-dark'} bg-[#0a0a0a] text-white min-h-screen selection:bg-cyan-500/30`}>
+    <div
+      className={`${theme === 'light' ? 'theme-light' : 'theme-dark'} min-h-screen text-white transition-colors duration-500 selection:bg-cyan-500/30`}
+    >
       <Navbar theme={theme} onToggleTheme={toggleTheme} />
       <main>
         <Hero />

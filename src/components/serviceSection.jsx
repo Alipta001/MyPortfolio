@@ -149,9 +149,9 @@ export default function ServiceSection() {
   }, []);
 
   return (
-    <section id="services" className="py-24 md:py-40 bg-[#030303] text-white relative overflow-hidden">
+    <section id="services" className="py-16 md:py-24 bg-[#030303] text-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <header className="mb-20">
+        <header className="mb-12 md:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -222,11 +222,11 @@ function ServiceCard({ service, index }) {
         {/* Bottom Section: Text */}
         <div className="space-y-4">
           {/* Mobile: Cyan titles by default | Desktop: White shifting to Cyan on hover */}
-          <h3 className="text-3xl md:text-4xl font-black italic tracking-tighter uppercase max-md:text-cyan-400 md:group-hover:text-cyan-400 transition-colors duration-500">
+          <h3 className="service-title text-3xl md:text-4xl font-black italic tracking-tighter uppercase max-md:text-cyan-400 md:group-hover:text-cyan-400 transition-colors duration-500">
             {service.title}
           </h3>
           
-          <p className="max-md:text-white text-gray-400 text-sm md:text-base font-light leading-relaxed max-w-sm md:group-hover:text-white transition-colors duration-500">
+          <p className="service-description max-md:text-white text-gray-400 text-sm md:text-base font-light leading-relaxed max-w-sm md:group-hover:text-white transition-colors duration-500">
             {service.description || service.desc}
           </p>
 
@@ -234,7 +234,7 @@ function ServiceCard({ service, index }) {
             {service.tags.map((tag) => (
               <span 
                 key={tag} 
-                className="px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border max-md:border-cyan-500/30 max-md:text-cyan-400 border-white/5 text-[9px] font-bold uppercase tracking-widest text-gray-400 md:group-hover:border-cyan-500/30 md:group-hover:text-cyan-400 transition-all"
+                className="service-tag px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border max-md:border-cyan-500/30 max-md:text-cyan-400 border-white/5 text-[9px] font-bold uppercase tracking-widest text-gray-400 md:group-hover:border-cyan-500/30 md:group-hover:text-cyan-400 transition-all"
               >
                 {tag}
               </span>

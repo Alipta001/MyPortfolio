@@ -190,9 +190,9 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="py-24 bg-[#030303] text-white overflow-hidden">
+    <section id="projects" className="py-16 md:py-24 bg-[#030303] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <header className="mb-16">
+        <header className="mb-12 md:mb-16">
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -288,13 +288,13 @@ function ModernProjectCard({ project, index }) {
             {/* Category */}
             <div className="flex items-center gap-3 mb-4">
               <span className={`h-[1px] w-6 bg-gradient-to-r ${project.gradient}`} />
-              <span className="text-[10px] font-bold tracking-[0.2em] text-cyan-500 uppercase">
+              <span className="project-meta text-[10px] font-bold tracking-[0.2em] text-cyan-500 uppercase">
                 {project.category}
               </span>
             </div>
 
             {/* Title */}
-            <h3 className={`font-black italic tracking-tighter uppercase mb-2 leading-[0.85] transition-all
+            <h3 className={`project-title font-black italic tracking-tighter uppercase mb-2 leading-[0.85] transition-all
               ${isSmallCard ? 'text-3xl md:text-4xl' : 'text-5xl md:text-7xl'}`}>
               {project.title}
             </h3>
@@ -302,7 +302,7 @@ function ModernProjectCard({ project, index }) {
             {/* Description Expandable Logic */}
             <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 opacity-100 lg:opacity-0 lg:group-hover:opacity-100">
               <div className="overflow-hidden">
-                <p className={`text-gray-400 font-light mb-4 mt-3 leading-relaxed
+                <p className={`project-description text-gray-400 font-light mb-4 mt-3 leading-relaxed
                   ${isSmallCard ? 'text-xs max-w-[220px]' : 'text-sm md:text-base max-w-sm'}`}>
                   {project.desc}
                 </p>
@@ -312,7 +312,7 @@ function ModernProjectCard({ project, index }) {
             {/* Tech Stack */}
             <div className="flex flex-wrap gap-2 mt-2">
               {project.tech.map((t) => (
-                <span key={t} className="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-[9px] font-mono text-gray-400 uppercase group-hover:text-cyan-400/80 transition-colors">
+                <span key={t} className="project-chip px-3 py-1 rounded-md bg-white/5 border border-white/10 text-[9px] font-mono text-gray-400 uppercase group-hover:text-cyan-400/80 transition-colors">
                   {t}
                 </span>
               ))}
