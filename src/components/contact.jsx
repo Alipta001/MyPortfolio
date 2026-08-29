@@ -14,17 +14,26 @@ const schema = yup.object({
 
 export default function Contact() {
   const [submitError, setSubmitError] = useState('');
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
+  const [isSending, setIsSending] = useState(false);
+  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm({
     resolver: yupResolver(schema)
   });
 
   const onSubmit = async (data) => {
     setSubmitError('');
+    setIsSending(true);
+
     try {
-      await submitContact(data);
-      alert("Message sent successfully!");
-    } catch {
-      setSubmitError('Unable to send your message right now. Please try again.');
+      const response = await submitContact(data);
+      if (response?.success || response?.message) {
+        alert(response?.message || 'Message sent successfully!');
+        reset();
+      }
+    } catch (error) {
+      const message = error?.response?.data?.message || 'Unable to send your message right now. Please try again.';
+      setSubmitError(message);
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -106,11 +115,11 @@ export default function Contact() {
             <motion.button 
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              disabled={isSubmitting}
+              disabled={isSubmitting || isSending}
               className="group relative w-full overflow-hidden bg-white text-black py-5 rounded-2xl font-bold uppercase tracking-[0.2em] text-sm hover:bg-cyan-500 hover:text-white transition-all duration-500 disabled:opacity-50"
             >
               <span className="relative z-10">
-                {isSubmitting ? "Dispatching..." : "Send Message"}
+                {isSubmitting || isSending ? "Dispatching..." : "Send Message"}
               </span>
               <div className="absolute inset-0 bg-cyan-600 translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500" />
             </motion.button>
