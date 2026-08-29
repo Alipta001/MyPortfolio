@@ -178,53 +178,17 @@
 // }
 
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-
-const projects = [
-  {
-    title: "Zingo",
-    category: "Food Logistics",
-    desc: "Next-gen delivery engine with real-time state synchronization.",
-    tech: ["Next.js", "Redux", "Socket.io"],
-    image: "https://images.unsplash.com/photo-1512132411229-c30391241dd8?q=80&w=600",
-    gradient: "from-[#FF4E50] to-[#F9D423]",
-    size: "lg:col-span-8",
-    link: "https://zingo-one.vercel.app/"
-  },
-  {
-    title: "DocReserve",
-    category: "Healthcare SaaS",
-    desc: "Seamless doctor booking ecosystem powered by TanStack Query.",
-    tech: ["React", "Node.js", "MongoDB"],
-    image: "https://images.unsplash.com/photo-1638202993928-7267aad84c31",
-    gradient: "from-[#11998e] to-[#38ef7d]",
-    size: "lg:col-span-4",
-    link: "https://v0-doctor-appointment-platform-steel.vercel.app/"
-  },
-  {
-    title: "Student Management",
-    category: "Teaching",
-    desc: "Smart Student management for Educators.",
-    tech: ["MERN", "Firebase", "OAuth"],
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
-    gradient: "from-[#8E2DE2] to-[#4A00E0]",
-    size: "lg:col-span-4",
-    link: "https://remember-me-i9kt.vercel.app/"
-  },
-  {
-    title: "LuxeStay",
-    category: "Online Booking",
-    desc: "An immersive Hotel Booking platform for anyone.",
-    tech: ["Nextjs", "Nodejs", "Stripe"],
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945", 
-    gradient: "from-[#00c6ff] to-[#0072ff]",
-    size: "lg:col-span-8",
-    link: "https://hotel-booking-frontend-orcin.vercel.app"
-  }
-];
+import { getProjects } from '../api/endpoints';
 
 export default function Projects() {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    getProjects().then(setProjects).catch(() => setProjects([]));
+  }, []);
+
   return (
     <section id="projects" className="py-24 bg-[#030303] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
@@ -292,7 +256,7 @@ function ModernProjectCard({ project, index }) {
       transition={{ delay: index * 0.1 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative h-[550px] rounded-[2.5rem] overflow-hidden group bg-[#0a0a0a] border border-white/5 ${project.size}`}
+      className={`project-card relative h-[550px] rounded-[2.5rem] overflow-hidden group bg-[#0a0a0a] border border-white/5 ${project.size}`}
       style={{ perspective: 1000 }}
     >
       <a 

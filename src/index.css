@@ -9,6 +9,120 @@ body {
   overflow-x: hidden;
 }
 
+.theme-light {
+  background-color: #f4f8fa;
+  background-image: radial-gradient(rgba(20, 184, 166, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: #10212b;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.theme-light #about,
+.theme-light #skills,
+.theme-light #education,
+.theme-light #contact {
+  background-color: #f7fafb !important;
+}
+
+.theme-light #services,
+.theme-light #projects,
+.theme-light footer {
+  background-color: #eaf2f4 !important;
+}
+
+.theme-light [class*="bg-[#030303]"],
+.theme-light [class*="bg-[#0a0a0a]"] {
+  background-color: #f4f8fa !important;
+}
+
+.theme-light [class*="bg-[#111]"] {
+  background-color: #e9f0f3 !important;
+}
+
+.theme-light [class*="bg-white/[0.02]"],
+.theme-light [class*="bg-white/[0.05]"],
+.theme-light [class*="bg-white/5"] {
+  background-color: rgba(255, 255, 255, 0.82) !important;
+  box-shadow: 0 18px 45px rgba(31, 62, 72, 0.08);
+}
+
+.theme-light [class*="bg-black/"],
+.theme-light [class*="bg-black"] {
+  background-color: rgba(16, 33, 43, 0.08) !important;
+}
+
+.theme-light [class*="text-white"] {
+  color: #10212b !important;
+}
+
+.theme-light [class*="text-gray-200"],
+.theme-light [class*="text-gray-300"] {
+  color: #334b59 !important;
+}
+
+.theme-light [class*="text-gray-400"],
+.theme-light [class*="text-gray-500"] {
+  color: #49616d !important;
+}
+
+.theme-light [class*="border-white"] {
+  border-color: rgba(16, 33, 43, 0.16) !important;
+}
+
+.theme-light .project-card,
+.theme-light .service-card {
+  background-color: #10212b !important;
+  border-color: rgba(16, 33, 43, 0.18) !important;
+  box-shadow: 0 24px 60px rgba(31, 62, 72, 0.16);
+}
+
+.theme-light .project-card [class*="text-white"],
+.theme-light .service-card [class*="text-white"] {
+  color: #fff !important;
+}
+
+.theme-light .project-card [class*="text-gray-400"],
+.theme-light .service-card [class*="text-gray-400"] {
+  color: #c9d8de !important;
+}
+
+.theme-light .project-card [class*="from-[#0a0a0a]"],
+.theme-light .project-card [class*="via-[#0a0a0a]"],
+.theme-light .service-card [class*="from-[#0a0a0a]"],
+.theme-light .service-card [class*="via-[#0a0a0a]"] {
+  --tw-gradient-from: rgba(16, 33, 43, 0.98) var(--tw-gradient-from-position) !important;
+  --tw-gradient-via: rgba(16, 33, 43, 0.74) var(--tw-gradient-via-position) !important;
+}
+
+.theme-light .project-card [class*="bg-white/5"],
+.theme-light .service-card [class*="bg-white/5"],
+.theme-light .project-card [class*="bg-white/[0.02]"],
+.theme-light .service-card [class*="bg-white/[0.02]"] {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: none;
+}
+
+.theme-light [class*="border-t"] {
+  border-top-color: rgba(16, 33, 43, 0.16) !important;
+}
+
+.theme-light .stroke-text {
+  -webkit-text-stroke-color: rgba(16, 33, 43, 0.45);
+}
+
+/* Keep the image-led hero high contrast in light mode. */
+.theme-light #home [class*="text-white"] {
+  color: #fff !important;
+}
+
+.theme-light #home [class*="text-gray-400"] {
+  color: #d8e3e8 !important;
+}
+
+.theme-light #home [class*="bg-[#030303]"] {
+  background-color: rgba(3, 3, 3, 0.3) !important;
+}
+
 /* 1. Global Grain Overlay (Adds premium feel) */
 body::before {
   content: "";

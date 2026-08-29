@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Moon, Sun } from 'lucide-react';
 
-export default function Navbar() {
+export default function Navbar({ theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -11,7 +12,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = ['Home', 'About', 'Skills', 'Projects'];
+  const navLinks = ['Home', 'About', 'Skills', 'Education', 'Projects'];
 
   return (
     <nav className="fixed w-full top-0 md:top-6 z-[100] flex justify-center p-4">
@@ -41,6 +42,15 @@ export default function Navbar() {
 
         {/* Action Button */}
         <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={onToggleTheme}
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            className="p-2 rounded-full border border-white/10 text-gray-300 hover:text-cyan-400 hover:border-cyan-500/50 transition-colors"
+          >
+            {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+          </button>
           <a href="#contact" className="hidden sm:block bg-white text-black px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-wider hover:bg-cyan-500 hover:text-white transition-all">
             Contact
           </a>

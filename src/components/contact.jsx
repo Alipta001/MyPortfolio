@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { submitContact } from '../api/endpoints';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -12,15 +13,19 @@ const schema = yup.object({
 }).required();
 
 export default function Contact() {
+  const [submitError, setSubmitError] = useState('');
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
     resolver: yupResolver(schema)
   });
 
   const onSubmit = async (data) => {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    console.log("Form Data:", data);
-    alert("Message sent successfully!");
+    setSubmitError('');
+    try {
+      await submitContact(data);
+      alert("Message sent successfully!");
+    } catch {
+      setSubmitError('Unable to send your message right now. Please try again.');
+    }
   };
 
   return (
@@ -109,6 +114,7 @@ export default function Contact() {
               </span>
               <div className="absolute inset-0 bg-cyan-600 translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500" />
             </motion.button>
+            {submitError && <p className="text-[10px] text-red-500 uppercase tracking-widest">{submitError}</p>}
           </form>
         </motion.div>
       </div>
