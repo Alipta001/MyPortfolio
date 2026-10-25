@@ -178,17 +178,10 @@
 // }
 
 
-import React, { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { getProjects } from '../api/endpoints';
 
-export default function Projects() {
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    getProjects().then(setProjects).catch(() => setProjects([]));
-  }, []);
-
+export default function Projects({ projects }) {
   return (
     <section id="projects" className="py-16 md:py-24 bg-[#030303] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">

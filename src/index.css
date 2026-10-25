@@ -16,6 +16,24 @@ body {
   overflow-x: hidden;
 }
 
+.portfolio-loader {
+  cursor: auto;
+  font-family: 'Poppins', sans-serif;
+}
+
+.portfolio-loader button {
+  cursor: pointer;
+}
+
+@keyframes loader-progress {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(200%);
+  }
+}
+
 a,
 button,
 input,

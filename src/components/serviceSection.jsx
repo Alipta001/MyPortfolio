@@ -134,20 +134,12 @@
 // }
 
 
-import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Layout, Code, Smartphone, Zap } from 'lucide-react';
-import { getServices } from '../api/endpoints';
 
 const iconMap = { Code, Layout, Smartphone, Zap };
 
-export default function ServiceSection() {
-  const [services, setServices] = useState([]);
-
-  useEffect(() => {
-    getServices().then(setServices).catch(() => setServices([]));
-  }, []);
-
+export default function ServiceSection({ services }) {
   return (
     <section id="services" className="py-16 md:py-24 bg-[#030303] text-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">

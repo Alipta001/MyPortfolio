@@ -1,17 +1,7 @@
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap } from 'lucide-react';
-import { getEducation } from '../api/endpoints';
 
-export default function EducationSection() {
-  const [education, setEducation] = useState([]);
-
-  useEffect(() => {
-    getEducation()
-      .then(setEducation)
-      .catch(() => setEducation([]));
-  }, []);
-
+export default function EducationSection({ education }) {
   return (
     <section id="education" className="py-16 md:py-24 px-6 bg-[#030303] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto">

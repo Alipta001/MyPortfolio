@@ -1,14 +1,6 @@
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { getSkills } from '../api/endpoints';
 
-export default function SkillSection() {
-  const [skills, setSkills] = useState([]);
-
-  useEffect(() => {
-    getSkills().then(setSkills).catch(() => setSkills([]));
-  }, []);
-
+export default function SkillSection({ skills }) {
   return (
     <section id="skills" className="py-20 md:py-32 px-6 max-w-7xl mx-auto overflow-hidden">
       <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">

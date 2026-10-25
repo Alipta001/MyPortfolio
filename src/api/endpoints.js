@@ -8,4 +8,6 @@ export const getSkills = () => api.get('/skills').then(unwrap);
 export const getExperience = () => api.get('/experience').then(unwrap);
 export const getEducation = () => api.get('/education').then(unwrap);
 export const getServices = () => api.get('/services').then(unwrap);
-export const submitContact = contact => api.post('/contact', contact).then(unwrap);
+export const submitContact = contact => api
+  .post('/contact', contact, { timeout: 20000 })
+  .then(unwrap);
