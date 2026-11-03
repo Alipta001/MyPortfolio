@@ -208,6 +208,41 @@ export default function Projects({ projects }) {
   );
 }
 
+const SIZE_MAP = {
+  'lg:col-span-4': { className: 'lg:col-span-4 md:col-span-1', isSmall: true, span: 4 },
+  'lg:col-span-6': { className: 'lg:col-span-6 md:col-span-1', isSmall: false, span: 6 },
+  'lg:col-span-8': { className: 'lg:col-span-8 md:col-span-2', isSmall: false, span: 8 },
+  'lg:col-span-12': { className: 'lg:col-span-12 md:col-span-2', isSmall: false, span: 12 },
+};
+
+function getCardSizeInfo(sizeString) {
+  const str = String(sizeString || '').trim();
+  if (SIZE_MAP[str]) return SIZE_MAP[str];
+
+  if (str.includes('12')) return SIZE_MAP['lg:col-span-12'];
+  if (str.includes('8')) return SIZE_MAP['lg:col-span-8'];
+  if (str.includes('4')) return SIZE_MAP['lg:col-span-4'];
+  return SIZE_MAP['lg:col-span-6'];
+}
+
+function getGradientStyle(gradientStr) {
+  if (!gradientStr) return { background: 'linear-gradient(90deg, #06b6d4, #3b82f6)' };
+
+  const hexMatches = gradientStr.match(/#([0-9a-fA-F]{3,8})/g);
+  if (hexMatches && hexMatches.length >= 2) {
+    return { background: `linear-gradient(90deg, ${hexMatches[0]}, ${hexMatches[1]})` };
+  }
+
+  const named = {
+    'from-cyan-500 to-blue-500': 'linear-gradient(90deg, #06b6d4, #3b82f6)',
+    'from-blue-500 to-indigo-500': 'linear-gradient(90deg, #3b82f6, #6366f1)',
+    'from-purple-500 to-pink-500': 'linear-gradient(90deg, #a855f7, #ec4899)',
+    'from-emerald-500 to-teal-500': 'linear-gradient(90deg, #10b981, #14b8a6)',
+  };
+
+  return { background: named[gradientStr] || 'linear-gradient(90deg, #06b6d4, #3b82f6)' };
+}
+
 function ModernProjectCard({ project, index }) {
   const cardRef = useRef(null);
   
@@ -238,7 +273,9 @@ function ModernProjectCard({ project, index }) {
     y.set(0);
   }
 
-  const isSmallCard = project.size.includes('col-span-4');
+  const sizeInfo = getCardSizeInfo(project?.size);
+  const isSmallCard = sizeInfo.isSmall;
+  const techList = Array.isArray(project?.tech) ? project.tech : [];
 
   return (
     <motion.div
@@ -249,7 +286,8 @@ function ModernProjectCard({ project, index }) {
       transition={{ delay: index * 0.1 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`project-card relative h-[550px] rounded-[2.5rem] overflow-hidden group bg-[#0a0a0a] border border-white/5 ${project.size}`}
+      data-span={sizeInfo.span}
+      className={`project-card relative h-[550px] rounded-[2.5rem] overflow-hidden group bg-[#0a0a0a] border border-white/5 ${sizeInfo.className}`}
       style={{ perspective: 1000 }}
     >
       <a 
@@ -280,7 +318,7 @@ function ModernProjectCard({ project, index }) {
           >
             {/* Category */}
             <div className="flex items-center gap-3 mb-4">
-              <span className={`h-[1px] w-6 bg-gradient-to-r ${project.gradient}`} />
+              <span className="h-[1px] w-6 inline-block" style={getGradientStyle(project.gradient)} />
               <span className="project-meta text-[10px] font-bold tracking-[0.2em] text-cyan-500 uppercase">
                 {project.category}
               </span>
@@ -304,7 +342,7 @@ function ModernProjectCard({ project, index }) {
 
             {/* Tech Stack */}
             <div className="flex flex-wrap gap-2 mt-2">
-              {project.tech.map((t) => (
+              {techList.map((t) => (
                 <span key={t} className="project-chip px-3 py-1 rounded-md bg-white/5 border border-white/10 text-[9px] font-mono text-gray-400 uppercase group-hover:text-cyan-400/80 transition-colors">
                   {t}
                 </span>
