@@ -180,6 +180,7 @@
 
 import { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { resolveImageUrl } from '../api/axios';
 
 export default function Projects({ projects }) {
   return (
@@ -302,13 +303,18 @@ function ModernProjectCard({ project, index }) {
         >
           {/* 1. IMAGE ZONE (Top 70%) */}
           <div className="absolute top-0 left-0 w-full h-[70%] overflow-hidden pointer-events-none">
-            <motion.img 
-              style={{ x: imgX, y: imgY, scale: 1.15 }} 
-              src={project.image} 
-              alt={project.title} 
-              // Fixed: Added max-lg:grayscale-0 so images are vibrant on mobile right away
-              className="w-full h-full object-cover transition-all duration-700 max-lg:grayscale-0 lg:grayscale-[100%] group-hover:grayscale-0"
-            />
+            {project.image ? (
+              <motion.img 
+                style={{ x: imgX, y: imgY, scale: 1.15 }} 
+                src={resolveImageUrl(project.image)} 
+                alt={project.title} 
+                // Fixed: Added max-lg:grayscale-0 so images are vibrant on mobile right away
+                className="w-full h-full object-cover transition-all duration-700 max-lg:grayscale-0 lg:grayscale-[100%] group-hover:grayscale-0"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+            ) : null}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/20 to-transparent" />
           </div>
 

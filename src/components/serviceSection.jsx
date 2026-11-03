@@ -136,6 +136,7 @@
 
 import { motion } from 'framer-motion';
 import { Layout, Code, Smartphone, Zap } from 'lucide-react';
+import { resolveImageUrl } from '../api/axios';
 
 const iconMap = { Code, Layout, Smartphone, Zap };
 
@@ -185,11 +186,16 @@ function ServiceCard({ service, index }) {
     >
       {/* 1. BACKGROUND IMAGE LAYER */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={service.image} 
-          alt={service.title}
-          className="w-full h-full object-cover max-md:grayscale-0 max-md:scale-110 md:grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700"
-        />
+        {service.image ? (
+          <img 
+            src={resolveImageUrl(service.image)} 
+            alt={service.title}
+            className="w-full h-full object-cover max-md:grayscale-0 max-md:scale-110 md:grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+        ) : null}
         {/* Dark Overlays for Text Readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent" />
         
